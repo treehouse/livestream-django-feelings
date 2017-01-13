@@ -40,6 +40,7 @@
                 <li><a href="#">Sign up</a></li>
             {% else %}
                 <li><a href="#">Record</a></li>
+                <li><a href="{% url 'users:logout' %}">Logout</a></li>
             {% endif %}
             </ul>
         </div><!--/.navbar-collapse -->
