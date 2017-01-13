@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load bootstrap3 %}
 
 {% block title %}Login | {{ block.super }}{% endblock %}
 
@@ -8,7 +9,7 @@
         <div class="col-md-6">
             <h3>Login</h3>
             <form action="" method="POST">
-                {{ form.as_p }}
+                {% bootstrap_form form %}
                 {% csrf_token %}
                 <input type="submit" value="Login" class="btn btn-primary">
             </form>
