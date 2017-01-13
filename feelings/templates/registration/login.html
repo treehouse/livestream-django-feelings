@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Login | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container pt">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Login</h3>
+            <form action="" method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="submit" value="Login" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Record how you're feeling!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque delectus, doloremque ducimus fugiat reprehenderit rerum voluptatem! Beatae cumque cupiditate exercitationem facere harum labore quam? Officiis pariatur perspiciatis quam qui vero.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
