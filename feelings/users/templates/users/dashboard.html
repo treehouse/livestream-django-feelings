@@ -25,9 +25,26 @@
             {% thought_form %}
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="ct-chart ct-perfect-fourth"></div>
+            {% chart_data as email %}
+            {{ email }}
+        </div>
+    </div>
 </div>
 {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'js/chartist/chartist.min.css' %}">
+{% endblock %}
+
 {% block js %}
-<script src="{% static 'js/stretchy.js' %}" data-filter="#id_notes" async></script>
+    <script src="{% static 'js/stretchy.js' %}" data-filter="#id_notes" async></script>
+    <script src="{% static 'js/chartist/chartist.min.js' %}"></script>
+    <script>
+        {% chart_data as data %}
+        var data = {{ data|safe }};
+        new Chartist.Line('.ct-chart', data);
+    </script>
 {% endblock %}
