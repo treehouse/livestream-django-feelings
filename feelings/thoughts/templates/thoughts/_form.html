@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 
-<form method="POST" action="#">
+<form method="POST" action="{% url 'thoughts:create' %}">
     <h2>How're you feeling?</h2>
     {% csrf_token %}
     <div class="row">
