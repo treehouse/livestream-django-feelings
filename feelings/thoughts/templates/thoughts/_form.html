@@ -4,8 +4,7 @@
     <h2>How're you feeling?</h2>
     {% csrf_token %}
     <div class="row">
-        <div class="col-md-4">{% bootstrap_field form.condition layout='horizontal' %}</div>
-        <div class="col-md-6">{% bootstrap_field form.notes layout='horizontal' %}</div>
-        <div class="col-md-2">{% buttons submit='Record' %}{% endbuttons %}</div>
+        {% bootstrap_form form %}
+        {% buttons submit='Record' %}{% endbuttons %}
     </div>
 </form>
