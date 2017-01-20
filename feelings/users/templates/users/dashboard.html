@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 
+{% load thought_tags %}
+
 {% block title %}Dashboard | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="container">
+    {% thought_form %}
     <h1>Dashboard</h1>
 </div>
 {% endblock %}
