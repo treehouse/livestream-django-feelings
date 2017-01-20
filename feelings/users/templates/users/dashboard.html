@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-
+{% load static from staticfiles %}
 {% load thought_tags %}
 
 {% block title %}Dashboard | {{ block.super }}{% endblock %}
@@ -26,4 +26,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/stretchy.js' %}" data-filter="#id_notes" async></script>
 {% endblock %}
