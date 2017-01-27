@@ -29,6 +29,14 @@
         <div class="col-md-6">
             <div class="ct-chart ct-perfect-fourth"></div>
         </div>
+        <div class="col-md-6">
+            <h3>Companies</h3>
+            <div class="list-group">
+                {% for company in user.companies.all %}
+                    <a href="{% url 'groups:companies:detail' slug=company.slug %}" class="list-group-item">{{ company.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
