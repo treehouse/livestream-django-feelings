@@ -12,4 +12,4 @@ class CompanyForm(forms.ModelForm):
 class FamilyForm(forms.ModelForm):
     class Meta:
         fields = ('name', 'description')
-        model = models.Company
+        model = models.Family
