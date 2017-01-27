@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load bootstrap3 %}
 
 {% block title %}{{ headline }} | {{ block.super }}{% endblock %}
 
@@ -11,6 +12,11 @@
                 {% if user == object.created_by %}
                     <hr>
                     <a href="{% url 'groups:companies:update' slug=object.slug %}" class="btn btn-default">Edit</a>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_field form.email_or_username layout='horizontal' %}
+                        <input type="submit" value="Invite!" class="btn btn-default">
+                    </form>
                 {% endif %}
             </div>
             <div class="col-md-6">
