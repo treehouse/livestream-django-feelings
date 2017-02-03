@@ -2,3 +2,4 @@ Django==1.10.5
 django-bootstrap3==8.1.0
 django-braces
 django-autoslug==1.9.3
+django-debug-toolbar==1.6
