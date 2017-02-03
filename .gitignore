@@ -93,3 +93,6 @@ ENV/
 
 # Database
 feelings/db.sqlite3
+
+# Email
+feelings/emails/
