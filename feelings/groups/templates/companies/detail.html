@@ -17,6 +17,8 @@
                         {% bootstrap_field form.email_or_username layout='horizontal' %}
                         <input type="submit" value="Invite!" class="btn btn-default">
                     </form>
+                {% else %}
+                    <a href="{% url 'groups:companies:leave' slug=object.slug %}" class="btn btn-danger">Leave</a>
                 {% endif %}
             </div>
             <div class="col-md-6">

@@ -11,6 +11,8 @@
                 {% if user == object.created_by %}
                     <hr>
                     <a href="{% url 'groups:families:update' slug=object.slug %}" class="btn btn-default">Edit</a>
+                {% else %}
+                    <a href="{% url 'groups:families:leave' slug=object.slug %}" class="btn btn-danger">Leave</a>
                 {% endif %}
             </div>
             <div class="col-md-6">
