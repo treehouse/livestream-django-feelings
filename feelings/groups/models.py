@@ -2,6 +2,8 @@ import uuid
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 from autoslug import AutoSlugField
@@ -72,3 +74,12 @@ class FamilyInvite(Invite):
 
     def __str__(self):
         return f'{self.to_user} invited to {self.family} by {self.from_user}'
+
+
+@receiver(post_save, sender=CompanyInvite)
+def join_company(sender, instance, created, **kwargs):
+    if not created:
+        if instance.status == 1:
+            instance.company.members.add(instance.to_user)
+
+
