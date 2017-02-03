@@ -46,7 +46,7 @@ class Invite(models.Model):
     from_user = models.ForeignKey(User, related_name='%(class)s_created')
     to_user = models.ForeignKey(User, related_name='%(class)s_received')
     status = models.IntegerField(default=0, choices=INVITE_STATUSES)
-    uuid = models.CharField(max_length=32, default='')
+    uuid = models.CharField(max_length=32, default='', blank=True)
 
     class Meta:
         abstract = True
