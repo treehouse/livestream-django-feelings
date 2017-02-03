@@ -5,7 +5,7 @@ from django.views import generic
 from braces.views import SetHeadlineMixin
 
 from .. import forms
-from ..models import Family
+from .. import models
 
 
 class Create(LoginRequiredMixin, SetHeadlineMixin, generic.CreateView):
@@ -41,3 +41,32 @@ class Detail(LoginRequiredMixin, generic.DetailView):
 
     def get_queryset(self):
         return self.request.user.families.all()
+
+
+class Invites(LoginRequiredMixin, generic.ListView):
+    model = models.FamilyInvite
+    template_name = 'families/invites.html'
+
+    def get_queryset(self):
+        return self.request.user.familyinvite_received.filter(status=0)
+
+
+class InviteResponse(LoginRequiredMixin, generic.RedirectView):
+    url = reverse_lazy('groups:families:invites')
+
+    def get(self, request, *args, **kwargs):
+        invite = get_object_or_404(
+            models.FamilyInvite,
+            to_user=request.user,
+            uuid=kwargs.get('code'),
+            status=0
+        )
+        if kwargs.get('response') == 'accept':
+            invite.status = 1
+        else:
+            invite.status = 2
+
+        invite.save()
+
+        return super().get(request, *args, **kwargs)
+

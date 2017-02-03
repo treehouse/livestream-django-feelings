@@ -14,6 +14,9 @@ company_patterns = [
 
 family_patterns = [
     url(r'^create/$', family.Create.as_view(), name='create'),
+    url(r'^invites/$', family.Invites.as_view(), name='invites'),
+    url(r'^invites/(?P<code>\w+)/(?P<response>accept|reject)/$',
+        family.InviteResponse.as_view(), name='invite_response'),
     url(r'^edit/(?P<slug>[-\w]+)/$', family.Update.as_view(), name='update'),
     url(r'^view/(?P<slug>[-\w]+)/$', family.Detail.as_view(), name='detail'),
 ]

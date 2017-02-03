@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+
+{% block title %}Invites | {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="container pt">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    {% for invite in object_list %}
+                        <li class="list-group-item row">
+                            <div class="pull-right">
+                                <a href="{% url 'groups:families:invite_response' code=invite.uuid response='accept' %}" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i></a>
+                                <a href="{% url 'groups:families:invite_response' code=invite.uuid response='reject' %}" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                            {{ invite.family }} by {{ invite.from_user }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
