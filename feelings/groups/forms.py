@@ -30,3 +30,6 @@ class CompanyInviteForm(forms.Form):
             raise ValidationError('No such user')
         return data
 
+
+class LeaveForm(forms.Form):
+    pass

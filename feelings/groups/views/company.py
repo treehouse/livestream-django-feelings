@@ -70,6 +70,29 @@ class Detail(LoginRequiredMixin, generic.FormView):
         return response
 
 
+class Leave(LoginRequiredMixin, SetHeadlineMixin, generic.FormView):
+    form_class = forms.LeaveForm
+    template_name = 'companies/form.html'
+    success_url = reverse_lazy('users:dashboard')
+
+    def get_object(self):
+        try:
+            self.object = self.request.user.companies.filter(
+                slug=self.kwargs.get('slug'),
+            ).exclude(created_by=self.request.user).get()
+        except models.Company.DoesNotExist:
+            raise Http404
+
+    def get_headline(self):
+        self.get_object()
+        return f'Leave {self.object}?'
+
+    def form_valid(self, form):
+        self.get_object()
+        self.object.members.remove(self.request.user)
+        return super().form_valid(form)
+
+
 class Invites(LoginRequiredMixin, generic.ListView):
     model = models.CompanyInvite
     template_name = 'companies/invites.html'

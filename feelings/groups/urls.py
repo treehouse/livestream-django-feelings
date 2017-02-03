@@ -10,6 +10,7 @@ company_patterns = [
         company.InviteResponse.as_view(), name='invite_response'),
     url(r'^edit/(?P<slug>[-\w]+)/$', company.Update.as_view(), name='update'),
     url(r'^view/(?P<slug>[-\w]+)/$', company.Detail.as_view(), name='detail'),
+    url(r'^leave/(?P<slug>[-\w]+)/$', company.Leave.as_view(), name='leave'),
 ]
 
 family_patterns = [
@@ -19,6 +20,7 @@ family_patterns = [
         family.InviteResponse.as_view(), name='invite_response'),
     url(r'^edit/(?P<slug>[-\w]+)/$', family.Update.as_view(), name='update'),
     url(r'^view/(?P<slug>[-\w]+)/$', family.Detail.as_view(), name='detail'),
+    url(r'^leave/(?P<slug>[-\w]+)/$', family.Leave.as_view(), name='leave'),
 ]
 
 urlpatterns = [
