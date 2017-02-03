@@ -8,6 +8,8 @@ from django.utils import timezone
 
 from autoslug import AutoSlugField
 
+from .emails import send_invite_email
+
 
 class Group(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
@@ -89,3 +91,10 @@ def join_company(sender, instance, created, **kwargs):
         if instance.status == 1:
             instance.family.members.add(instance.to_user)
 
+
+def invite_sent(sender, instance, created, **kwargs):
+    if created:
+        send_invite_email(sender, instance.id)
+
+post_save.connect(invite_sent, sender=CompanyInvite)
+post_save.connect(invite_sent, sender=FamilyInvite)

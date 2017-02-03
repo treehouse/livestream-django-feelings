@@ -1,0 +1,7 @@
+Hi {{ invite.to_user.get_full_name }}!
+
+You've been invited to join {% if invite.company %}{{ invite.company.name }}{% else %}{{ invite.family.name }}{% endif %} by {{ invite.from_user.get_full_name }}.
+
+Thanks!
+
+Feelings
