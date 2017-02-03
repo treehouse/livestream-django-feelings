@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <ul>
-                    {% for invite in invites %}
+                    {% for invite in object_list %}
                         <li><a href="#">{{ invite.company }} by {{ invite.from_user }}</a></li>
                     {% endfor %}
                 </ul>

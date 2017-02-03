@@ -70,6 +70,7 @@ class Detail(LoginRequiredMixin, generic.FormView):
 
 
 class Invites(LoginRequiredMixin, generic.ListView):
+    model = models.CompanyInvite
     template_name = 'companies/invites.html'
 
     def get_queryset(self):
