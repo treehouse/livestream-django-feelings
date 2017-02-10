@@ -25,11 +25,11 @@ from thoughts import urls as thought_urls
 from users import urls as user_urls
 from groups import urls as group_urls
 
-from users.serializers import router as user_router
+from users import routers as user_routers
 from thoughts import routers as thought_routers
 
 api_urlpatterns = [
-    url(r'', include(user_router.urls)),
+    url(r'', include(user_routers.router.urls)),
     url(r'', include(thought_routers.router.urls)),
 ]
 
