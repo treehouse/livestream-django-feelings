@@ -5,11 +5,17 @@ from rest_framework import serializers
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     password = serializers.HiddenField(default='')
+    thoughts = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='thoughts-detail'
+    )
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name',
-                  'email', 'last_login', 'date_joined', 'password')
+                  'email', 'last_login', 'date_joined',
+                  'password', 'thoughts')
         read_only_fields = ('last_login', 'date_joined')
 
     def create(self, validated_data):
