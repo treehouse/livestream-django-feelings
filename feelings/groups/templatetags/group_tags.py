@@ -27,4 +27,3 @@ def invites_dot(context, invite_type):
         return {
             'invites': bool(context['user'].companyinvite_received.filter(status=0))
         }
-
