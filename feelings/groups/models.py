@@ -96,5 +96,6 @@ def invite_sent(sender, instance, created, **kwargs):
     if created:
         send_invite_email(sender, instance.id)
 
+
 post_save.connect(invite_sent, sender=CompanyInvite)
 post_save.connect(invite_sent, sender=FamilyInvite)

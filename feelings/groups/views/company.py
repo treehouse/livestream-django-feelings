@@ -76,12 +76,10 @@ class Leave(LoginRequiredMixin, SetHeadlineMixin, generic.FormView):
     success_url = reverse_lazy('users:dashboard')
 
     def get_object(self):
-        try:
-            self.object = self.request.user.companies.filter(
-                slug=self.kwargs.get('slug'),
-            ).exclude(created_by=self.request.user).get()
-        except models.Company.DoesNotExist:
-            raise Http404
+        qs = models.Company.objects.exclude(created_by=self.request.user)
+        self.object = get_object_or_404(
+            qs,
+            slug=self.kwargs.get('slug'))
 
     def get_headline(self):
         self.get_object()
@@ -119,6 +117,3 @@ class InviteResponse(LoginRequiredMixin, generic.RedirectView):
         invite.save()
 
         return super().get(request, *args, **kwargs)
-
-
-

@@ -1,6 +1,5 @@
 from django import forms
 from django.db.models import Q
-from django.contrib.auth.models import User
 
 from . import models
 
@@ -24,10 +23,10 @@ class CompanyInviteForm(forms.Form):
         data = self.cleaned_data['email_or_username']
         try:
             self.invitee = models.User.objects.get(
-                Q(email=data)|Q(username=data)
+                Q(email=data) | Q(username=data)
             )
         except models.User.DoesNotExist:
-            raise ValidationError('No such user')
+            raise forms.ValidationError('That user/email does not exist!')
         return data
 
 
