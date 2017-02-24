@@ -37,32 +37,34 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Companies {% invites_dot 'company' %}<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        {% for company in user.companies.all %}
-                            <li><a href="{% url 'groups:companies:detail' slug=company.slug %}">{{ company.name }}</a></li>
-                        {% endfor %}
-                        <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="{% url 'groups:companies:invites' %}">Invitations {% invites_badge 'company' %}</a>
-                            <a href="{% url 'groups:companies:create' %}">Create New</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Families {% invites_dot 'family' %}<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        {% for family in user.families.all %}
-                            <li><a href="{% url 'groups:families:detail' slug=family.slug %}">{{ family.name }}</a></li>
-                        {% endfor %}
-                        <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="{% url 'groups:families:invites' %}">Invitations {% invites_badge 'family' %}</a>
-                            <a href="{% url 'groups:families:create' %}">Create New</a>
-                        </li>
-                    </ul>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Companies {% invites_dot 'company' %}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% for company in user.companies.all %}
+                                <li><a href="{% url 'groups:companies:detail' slug=company.slug %}">{{ company.name }}</a></li>
+                            {% endfor %}
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{% url 'groups:companies:invites' %}">Invitations {% invites_badge 'company' %}</a>
+                                <a href="{% url 'groups:companies:create' %}">Create New</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Families {% invites_dot 'family' %}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% for family in user.families.all %}
+                                <li><a href="{% url 'groups:families:detail' slug=family.slug %}">{{ family.name }}</a></li>
+                            {% endfor %}
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{% url 'groups:families:invites' %}">Invitations {% invites_badge 'family' %}</a>
+                                <a href="{% url 'groups:families:create' %}">Create New</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
             {% if not user.is_authenticated %}

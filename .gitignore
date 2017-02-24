@@ -96,3 +96,11 @@ feelings/db.sqlite3
 
 # Email
 feelings/emails/
+
+# Bundles
+feelings/assets/bundles/
+
+# Node
+feelings/node_modules/
+feelings/webpack-stats.json
+tags

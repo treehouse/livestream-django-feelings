@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'bootstrap3',
+    'webpack_loader',
     'users',
     'groups',
     'thoughts',
@@ -144,4 +145,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
 }

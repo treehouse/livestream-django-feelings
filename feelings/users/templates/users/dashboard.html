@@ -1,26 +1,15 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
 {% load thought_tags %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}Dashboard | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="container">
+    <div id="react-app"></div>
+
     <div class="row">
-        <div class="col-md-6">
-            <h2>Recent Thoughts</h2>
-            <div class="list-group">
-                {% for thought in user.thoughts.all %}
-                    <div class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                            <time class="pull-right small" datetime="{{ thought.recorded_at }}">{{ thought.recorded_at|date:"SHORT_DATE_FORMAT" }}</time>
-                            {{ thought.get_condition_display }}
-                        </h4>
-                        {% if thought.notes %} {{ thought.notes|linebreaks }} {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
         <div class="col-md-6">
             {% thought_form %}
         </div>
@@ -50,6 +39,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'js/chartist/chartist.min.css' %}">
+    {% render_bundle 'main' 'css' %}
 {% endblock %}
 
 {% block js %}
@@ -60,4 +50,5 @@
         var data = {{ data|safe }};
         new Chartist.Line('.ct-chart', data);
     </script>
+    {% render_bundle 'main' 'js' %}
 {% endblock %}
