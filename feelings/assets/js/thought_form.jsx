@@ -36,7 +36,6 @@ class ThoughtForm extends Component {
     }
 
     onSubmit = (e) => {
-        let _this = this;
         e.preventDefault();
 
         let csrf = Cookies.get('csrftoken');
@@ -57,7 +56,10 @@ class ThoughtForm extends Component {
                }
            }
        ).then((response) => {
-           console.log(response)
+           if (response.ok) {
+               this.setState({chosen_condition: null, notes: null})
+           }
+           return response;
        })
     }
 
@@ -71,7 +73,7 @@ class ThoughtForm extends Component {
                         <select name="condition" id="id_condition" required className="form-control" onChange={this.onConditionChange}>
                             <option value="">------------</option>
                         {this.state.conditions.map(condition =>
-                            <option key={condition.key} value={condition.value}>{condition.label}</option>
+                            <option key={condition.key} value={condition.value} selected={this.state.chosen_condition == condition.value}>{condition.label}</option>
                         )}
                         </select>
                     </div>
