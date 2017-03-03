@@ -10,7 +10,7 @@ class ThoughtSerializer(serializers.HyperlinkedModelSerializer):
         model = models.Thought
         fields = ('id', 'recorded_at', 'condition', 'condition_display',
                   'notes', 'user')
-        read_only_fields = ('id', 'recorded_at',)
+        read_only_fields = ('id', 'recorded_at', 'user')
 
     def create(self, validated_data):
         thought = models.Thought(**validated_data)

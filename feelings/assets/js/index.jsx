@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
 
 import { RecentThoughts } from './recent_thoughts';
+import { ThoughtForm } from './thought_form';
 
 class RootElement extends React.Component {
     // componentDidMount() {
@@ -24,7 +25,7 @@ class RootElement extends React.Component {
                     <RecentThoughts/>
                 </div>
                 <div className="col-md-6">
-                    Form here
+                    <ThoughtForm/>
                 </div>
             </div>
         )

@@ -28,6 +28,8 @@ from groups import urls as group_urls
 from users import routers as user_routers
 from thoughts import routers as thought_routers
 
+from thoughts.viewsets import ConditionsView
+
 api_urlpatterns = [
     url(r'', include(user_routers.router.urls)),
     url(r'', include(thought_routers.router.urls)),
@@ -42,6 +44,7 @@ urlpatterns = [
     url(r'^api/', include(api_urlpatterns)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^api/conditions', ConditionsView.as_view()),
 ]
 
 if settings.DEBUG:
