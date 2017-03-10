@@ -7,9 +7,8 @@ class Thought extends Component {
         super(props);
         this.state = props.data;
     }
+
     render() {
-        var date = new Date(this.state.recorded_at);
-        console.log(date);
         return (
             <div className="list-group-item">
                 <h4 className="list-group-item-heading">
@@ -23,28 +22,16 @@ class Thought extends Component {
 }
 
 class RecentThoughts extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {thoughts: []};
-    }
     componentDidMount() {
-        let _this = this;
-        fetch(
-            '/api/thoughts.json', {
-                credentials: 'same-origin'
-            }
-        ).then(function(response) {
-            return response.json()
-        }).then(function(data) {
-            _this.setState({thoughts: data});
-        });
+        this.props.onThoughtsChange();
     }
+
     render() {
         return (
             <div>
                 <h2>Recent Thoughts</h2>
                 <div className="list-group">
-                    {this.state.thoughts.map(thought =>
+                    {this.props.thoughts.map(thought =>
                         <Thought key={thought.id} data={thought}/>
                     )}
                 </div>

@@ -59,6 +59,7 @@ class ThoughtForm extends Component {
            if (response.ok) {
                this.setState({chosen_condition: null, notes: null})
            }
+           this.props.onThoughtsChange();
            return response;
        })
     }
