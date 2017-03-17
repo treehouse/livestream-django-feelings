@@ -67,7 +67,7 @@ class ThoughtForm extends Component {
     render() {
         return (
             <div>
-                <h2>How're you feeling?</h2>
+                <h2>How are you feeling?</h2>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label className="control-label" htmlFor="id_condition">Condition</label>

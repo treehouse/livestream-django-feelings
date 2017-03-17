@@ -22,7 +22,7 @@ class RootElement extends React.Component {
         ).then(function(response) {
             return response.json()
         }).then(function(data) {
-            _this.setState({thoughts: data});
+            _this.setState({thoughts: data.results});
         });
     }
 

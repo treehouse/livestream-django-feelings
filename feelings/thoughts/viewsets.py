@@ -9,8 +9,8 @@ from .models import CONDITIONS
 
 
 class ThoughtPagination(LimitOffsetPagination):
-    default_limit = 20
-    max_limit = 20
+    default_limit = 10
+    max_limit = 10
 
 
 class ThoughtViewSet(viewsets.ModelViewSet):
