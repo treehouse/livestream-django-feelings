@@ -9,6 +9,7 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'whatwg-fetch',
+        'chart.js',
         './assets/js/index'
     ],
 
@@ -44,6 +45,9 @@ module.exports = {
 
     resolve: {
         modules: ['node_modules', 'bower_components'],
-        extensions: ['.jsx', '.js']
+        extensions: ['.jsx', '.js'],
+        alias: {
+            'chart': require.resolve('chart.js')
+        }
     }
 };
