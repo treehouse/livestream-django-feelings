@@ -37,10 +37,6 @@ class RootElement extends React.Component {
                     </div>
                     <div className="col-md-6">
                         <ThoughtForm onThoughtsChange={this.updateThoughts}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-6">
                         <Chart thoughts={this.state.thoughts} onThoughtsChange={this.updateThoughts}/>
                     </div>
                 </div>
