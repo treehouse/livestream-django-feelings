@@ -13,8 +13,7 @@ def get_env_variable(var_name):
             raise ImproperlyConfigured(error_msg)
 
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
