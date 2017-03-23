@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath `pwd`feelings feelings.deploy
+web: gunicorn --pythonpath /app/feelings feelings.deploy
