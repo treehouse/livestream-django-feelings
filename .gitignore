@@ -98,7 +98,7 @@ feelings/db.sqlite3
 feelings/emails/
 
 # Bundles
-feelings/assets/bundles/
+feelings/assets/bundles/main-*.js
 
 # Node
 feelings/node_modules/
