@@ -14,7 +14,6 @@ def get_env_variable(var_name):
 
 
 DEBUG = False
-DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
