@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath feelings feelings.deploy --log-file -
+web: gunicorn --pythonpath feelings feelings.deploy
