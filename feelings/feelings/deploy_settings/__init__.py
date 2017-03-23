@@ -16,8 +16,6 @@ def get_env_variable(var_name):
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-print("deploy_settings used")
-
 ALLOWED_HOSTS = [
     'localhost',
     '.herokuapp.com',
