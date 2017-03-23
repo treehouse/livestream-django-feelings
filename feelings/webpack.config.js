@@ -15,7 +15,7 @@ module.exports = {
 
     output: {
         path: path.resolve('./assets/bundles/'),
-        filename: "[name]-[hash].js",
+        filename: "[name]/bundle.js",
         publicPath: 'http://localhost:3000/assets/bundles/'
     },
 

@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
-{% load thought_tags %}
 {% load render_bundle from webpack_loader %}
 
 {% block title %}Dashboard | {{ block.super }}{% endblock %}
@@ -31,17 +30,10 @@
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'js/chartist/chartist.min.css' %}">
     {% render_bundle 'main' 'css' %}
 {% endblock %}
 
 {% block js %}
     <script src="{% static 'js/stretchy.js' %}" data-filter="#id_notes" async></script>
-    <script src="{% static 'js/chartist/chartist.min.js' %}"></script>
-    <script>
-        {% chart_data as data %}
-        var data = {{ data|safe }};
-        new Chartist.Line('.ct-chart', data);
-    </script>
     {% render_bundle 'main' 'js' %}
 {% endblock %}
