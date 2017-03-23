@@ -3,6 +3,7 @@ import dj_database_url
 from feelings.settings import *
 
 def get_env_variable(var_name):
+    """Get an environment variable or throw an exception"""
     try:
         return os.environ[var_name]
     except KeyError:
