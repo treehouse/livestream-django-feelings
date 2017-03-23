@@ -1,1 +1,1 @@
-web: python feelings/manage.py collectstatic --yes --settings=feelings.deploy_settings && gunicorn --pythonpath /app/feelings feelings.deploy
+web: python feelings/manage.py collectstatic --noinput --settings=feelings.deploy_settings && gunicorn --pythonpath /app/feelings feelings.deploy
