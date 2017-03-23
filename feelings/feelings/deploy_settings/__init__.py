@@ -16,6 +16,8 @@ def get_env_variable(var_name):
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+print("deploy_settings used")
+
 ALLOWED_HOSTS = [
     'localhost',
     '.herokuapp.com',
@@ -25,7 +27,7 @@ INSTALLED_APPS += (
     'gunicorn',
 )
 
-db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 SECRET_KEY = get_env_variable("SECRET_KEY")
