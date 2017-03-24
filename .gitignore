@@ -98,9 +98,12 @@ feelings/db.sqlite3
 feelings/emails/
 
 # Bundles
-feelings/assets/bundles/main-*.js
+feelings/assets/bundles
 
 # Node
+node_modules/
 feelings/node_modules/
+webpack-stats-*.json
+webpack-stats.json
 feelings/webpack-stats.json
 tags

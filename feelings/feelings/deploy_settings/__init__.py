@@ -31,3 +31,8 @@ DATABASES['default'].update(db_from_env)
 SECRET_KEY = get_env_variable("SECRET_KEY")
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+WEBPACK_LOADER['DEFAULT'].update({
+    'BUNDLE_DIR_NAME': 'dist/',
+    'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
+})
