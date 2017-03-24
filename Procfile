@@ -1,1 +1,1 @@
-web: cd feelings && npm run build && cd .. && python feelings/manage.py collectstatic --noinput --settings=feelings.deploy_settings && gunicorn --pythonpath /app/feelings feelings.deploy
+web: npm run build && python feelings/manage.py collectstatic --noinput --settings=feelings.deploy_settings && gunicorn --pythonpath /app/feelings feelings.deploy
