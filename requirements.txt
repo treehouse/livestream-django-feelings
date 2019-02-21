@@ -1,4 +1,4 @@
-Django==1.10.5
+Django==1.10.8
 django-bootstrap3==8.1.0
 django-braces
 django-autoslug==1.9.3
